@@ -135,8 +135,12 @@ public class Client {
             LocalResource r = Records.newRecord(LocalResource.class);
             Path path = new Path(e.getValue());
             // copy local data to temporary folder in HDFS
-            if (!e.getValue().startsWith("hdfs://")) {
-                Path dst = new Path("hdfs://" + tmpPath + "/"+  path.getName());
+            if (!e.getValue().startsWith("hdfs://") && !e.getValue().startsWith("viewfs://")) {
+
+		LOG.info("if you use hdfs or view fs data.you must start with hdfs:// or viewfs://");
+		String fsDefaultName = conf.get(FileSystem.FS_DEFAULT_NAME_KEY);
+		Path dst = new Path(fsDefaultName + tmpPath + "/"+ path.getName());
+
                 dfs.copyFromLocalFile(false, true, path, dst);
                 dfs.setPermission(dst, permTemp);
                 dfs.deleteOnExit(dst);
@@ -282,8 +286,8 @@ public class Client {
 
         // Set up resource type requirements for ApplicationMaster
         Resource capability = Records.newRecord(Resource.class);
-        capability.setMemory(1024);
-        capability.setVirtualCores(1);
+        capability.setMemory(4096);
+        capability.setVirtualCores(2);
         LOG.info("jobname=" + this.jobName + ",username=" + this.userName);
         
         appContext.setApplicationName(jobName + ":DMLC-YARN");

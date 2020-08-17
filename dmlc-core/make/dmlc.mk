@@ -30,6 +30,7 @@ ifeq ($(WITH_FPIC), 1)
 	DMLC_CFLAGS += -fPIC
 endif
 
+USE_HDFS=1
 
 
 # Using default hadoop_home
