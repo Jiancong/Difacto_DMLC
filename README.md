@@ -18,7 +18,7 @@ Features
 * Scalable and Reliable
 
 
-New features of this branch
+New features
 ====
 * ViewFS protocol supported:
   - Supported viewFS
