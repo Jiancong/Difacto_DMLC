@@ -17,6 +17,12 @@ Features
   - All projects can read data from HDFS, S3 or local filesystem
 * Scalable and Reliable
 
+
+New features of this branch
+====
+* ViewFS protocol supported:
+  - Supported viewFS
+
 List of Tools
 ====
 * Linear method: [linear](src/linear)
