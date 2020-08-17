@@ -21,7 +21,7 @@ Features
 New features
 ====
 * ViewFS protocol supported:
-  - Supported viewFS
+  - Supported viewFS of Hadoop federated
 
 List of Tools
 ====
